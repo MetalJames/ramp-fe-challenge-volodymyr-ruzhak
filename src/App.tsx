@@ -24,7 +24,7 @@ export function App() {
     transactionsByEmployeeUtils.invalidateData()
 
     await employeeUtils.fetchAll()
-    //move setIsLoading from line 29 to line 27 right before paginatedTransactionsUtils.fetchAll()
+    //Bug 5 - move setIsLoading from line 29 to line 27 right before paginatedTransactionsUtils.fetchAll()
     //so it will display selected list instead of loading... 
     setIsLoading(false)
     await paginatedTransactionsUtils.fetchAll()
@@ -66,7 +66,7 @@ export function App() {
             if (newValue === null) {
               return
             }
-            //add checking for all employees, if go back from employee to All
+            //Bug 3 - add checking for all employees, if go back from employee to All
             //will load all transactions for all employees with no error
             else if (newValue.firstName === "All") {
               loadAllTransactions()
@@ -80,7 +80,7 @@ export function App() {
 
         <div className="RampGrid">
           <Transactions transactions={transactions} />
-          {/* make */}
+          {/* Bug 6 - make view more button not visible if there is no more pages */}
           {transactions !== null &&
             paginatedTransactions !== null &&
             paginatedTransactions.nextPage !== null && (

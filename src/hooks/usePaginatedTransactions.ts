@@ -21,7 +21,7 @@ export function usePaginatedTransactions(): PaginatedTransactionsResult {
       if (response === null || previousResponse === null) {
         return response
       }
-      //making pagination to view more transactions works so can load more transaction
+      //Bug 4 - making pagination to view more transactions works so can load more transaction
       //instead of only replacing it visible
       return { data: [...previousResponse.data, ...response.data], nextPage: response.nextPage }
     })

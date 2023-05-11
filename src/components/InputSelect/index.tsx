@@ -78,7 +78,7 @@ export function InputSelect<TItem>({
                 "RampInputSelect--dropdown-container-opened": isOpen,
               })}
               {...getMenuProps()}
-              //assign absolute position so it always stays under drop down selected filter
+              //BUG 1 - assign absolute position so it always stays under drop down selected filter
               style={{ position: "absolute" }}
               // style={{ top: dropdownPosition.top, left: dropdownPosition.left }}
             >

@@ -12,7 +12,7 @@ export const InputCheckbox: InputCheckboxComponent = ({ id, checked = false, dis
           "RampInputCheckbox--label-checked": checked,
           "RampInputCheckbox--label-disabled": disabled,
         })}
-        //add htmlFor so input and label will know what its for
+        //Bug 2 - add htmlFor so input and label will know what its for
         //could close label after input tag - also would work
         htmlFor={inputId}
       />

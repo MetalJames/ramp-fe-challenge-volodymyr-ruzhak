@@ -10,7 +10,7 @@ export const TransactionPane: TransactionPaneComponent = ({
   setTransactionApproval: consumerSetTransactionApproval,
 }) => {
   const [approved, setApproved] = useState(transaction.approved)
-  // using clearCache from customFetch
+  // Bug 7 - using clearCache from customFetch
   const { clearCache } = useCustomFetch()
 
   return (
@@ -31,7 +31,7 @@ export const TransactionPane: TransactionPaneComponent = ({
             transactionId: transaction.id,
             newValue,
           })
-          //using clearCache so it will not stuck with checked or unchecked
+          //Bug 7 - using clearCache so it will not stuck with checked or unchecked
           clearCache()
           setApproved(newValue)
         }}
