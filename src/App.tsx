@@ -24,9 +24,11 @@ export function App() {
     transactionsByEmployeeUtils.invalidateData()
 
     await employeeUtils.fetchAll()
+    //move setIsLoading from line 29 to line 27 right before paginatedTransactionsUtils.fetchAll()
+    //so it will display selected list instead of loading... 
+    setIsLoading(false)
     await paginatedTransactionsUtils.fetchAll()
 
-    setIsLoading(false)
   }, [employeeUtils, paginatedTransactionsUtils, transactionsByEmployeeUtils])
 
   const loadTransactionsByEmployee = useCallback(
@@ -66,7 +68,7 @@ export function App() {
             }
             //add checking for all employees, if go back from employee to All
             //will load all transactions for all employees with no error
-            else if (newValue.firstName === 'All'){
+            else if (newValue.firstName === "All") {
               loadAllTransactions()
               return
             }
@@ -78,19 +80,20 @@ export function App() {
 
         <div className="RampGrid">
           <Transactions transactions={transactions} />
-
-          {transactions !== null && (
-            <button
-              className="RampButton"
-              //add checking for view more button, if the next page does not exist => disable the button
-              disabled={paginatedTransactionsUtils.loading || paginatedTransactions?.nextPage == null}
-              onClick={async () => {
-                await loadAllTransactions()
-              }}
-            >
-              View More
-            </button>
-          )}
+          {/* make */}
+          {transactions !== null &&
+            paginatedTransactions !== null &&
+            paginatedTransactions.nextPage !== null && (
+              <button
+                className="RampButton"
+                disabled={paginatedTransactionsUtils.loading}
+                onClick={async () => {
+                  await loadAllTransactions()
+                }}
+              >
+                View More
+              </button>
+            )}
         </div>
       </main>
     </Fragment>
